@@ -35,8 +35,6 @@ class PersonalDetailsController {
         ...(address && { address }),
       }
 
-      logger.info(defaults)
-
       const [_, created] = await PersonalDetails.findOrCreate({
         where: { userId },
         defaults,
