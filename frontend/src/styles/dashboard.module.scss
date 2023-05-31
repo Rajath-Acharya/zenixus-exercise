@@ -1,0 +1,95 @@
+.dashboardContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px auto;
+  padding: 0;
+  .dashboard {
+    border: 1px solid rgba(203, 213, 225, 0.1);
+    background-color: #1e293b;
+    border-radius: 8px;
+    width: 100%;
+    min-height: calc(100vh - 2rem);
+    padding: 56px;
+    max-width: 1280px;
+    .profile {
+      border: 1px solid rgba(203, 213, 225, 0.1);
+      border-radius: 8px;
+      padding: 24px 40px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      .profileInfo {
+        display: flex;
+        flex-direction: column;
+        & > div {
+          display: flex;
+          gap: 24px;
+          margin-bottom: 12px;
+        }
+        button {
+          width: max-content;
+          height: 24px;
+          border-radius: 8px;
+          padding: 0 12px;
+          background-color: rgb(6, 182, 212);
+        }
+        input {
+          border: 1px solid rgba(203, 213, 225, 0.1);
+          outline: none;
+          padding: 4px 16px;
+          border-radius: 8px;
+          background-color: #33415580;
+          font-size: 14px;
+          color: #e2e8f0;
+          &::placeholder {
+            color: rgb(148, 163, 184)
+          }
+        }
+      }
+      .logoutCTA {
+        padding: 0 12px;
+        width: max-content;
+        height: 30px;
+        border-radius: 8px;
+        background-color: rgb(6, 182, 212);
+        font-size: 14px;
+        margin-top: 12px;
+      }
+    }
+    .list {
+      .leadListContainer {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+        .reportees, .unassignedUsers {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          .box {
+            width: 300px;
+            padding: 16px;
+            border: 1px solid rgba(203, 213, 225, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+              font-size: 15px;
+            }
+            button {
+              padding: 0 12px;
+              height: 30px;
+              border-radius: 8px;
+              background-color: rgb(6, 182, 212);
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

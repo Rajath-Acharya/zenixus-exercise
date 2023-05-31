@@ -1,11 +1,18 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from '../utils/interceptor';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/login.module.scss';
 import { BASE_API } from '../utils/constants';
 
 const Login:React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const navigateToSignupPage = () => {
+    navigate('/signup');
+  }
 
   const onSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +24,7 @@ const Login:React.FC = () => {
       })
       const token = response?.data?.accessToken;
       localStorage.setItem("token", token);
+      navigate('/dashboard');
     } catch(error) {
       console.log(error);
     }
@@ -47,6 +55,7 @@ const Login:React.FC = () => {
           />
         </div>
         <button type='submit'>Login</button>
+      <p className={styles.link}>Don't have an account? <span onClick={navigateToSignupPage}>Signup</span></p>
       </form>
     </div>
   );

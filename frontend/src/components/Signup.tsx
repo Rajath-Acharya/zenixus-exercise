@@ -12,6 +12,11 @@ const Signup:React.FC = () => {
 
   const navigate = useNavigate();
 
+  const navigateToLoginPage = () => {
+    navigate('/login');
+  }
+
+
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRole(event.target.value);
   };
@@ -73,6 +78,7 @@ const Signup:React.FC = () => {
           </select>
         </div>
         <button type='submit'>Signup</button>
+         <p className={styles.link}>Already an account? <span onClick={navigateToLoginPage}>Login</span></p>
       </form>
     </div>
   );
