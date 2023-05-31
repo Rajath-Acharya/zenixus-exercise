@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import {BASE_API} from './constants';
 
 const axiosInstance = axios.create({
-  // Add your base URL and other configurations here
   baseURL: BASE_API,
 });
 
