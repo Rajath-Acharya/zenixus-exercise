@@ -25,15 +25,15 @@ class AuthController {
 		try {
 			const {username, email, password, role} = req.body;
 			AuthController._validateRegisterUserPayload({username, email, password, role})
-    	const existingUser = await findUserByEmail(email)
 
+    	const existingUser = await findUserByEmail(email);
 			if (existingUser) {
 				return res.status(409).json({ error: 'User already exists with the provided email' });
 			}
 
 			const id = uuidv4();
 			const hashedPassword = await hash(password, 10);
-			const newUser =  await User.create({
+			const newUser = await User.create({
 				id,
 				username,
 				email,
@@ -45,9 +45,9 @@ class AuthController {
     	const { password: _, ...userWithoutPassword } = newUser.toJSON();
    		res.status(201).json({ user: userWithoutPassword });
 		} catch(error:any) {
-			const message = error.message || "Internal server error";
+			const message = error.message || "Something went wrong";
 			logger.error(message)
-			res.status(500).json({ error: message });
+			res.status(400).json({ error: message });
 		}
 	}
 

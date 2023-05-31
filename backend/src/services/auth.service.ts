@@ -4,7 +4,11 @@ import { LoginUserPayload } from "../types/auth.type";
 import { getAccessToken } from "../utils/token.helper";
 
 const findUserByEmail = async (email:string) => {
-  return await User.findOne({ where: { email }});
+  try {
+    return await User.findOne({ where: { email }});
+  } catch(error:any) {
+    return null;
+  } 
 }
 
 const verifyUser = async (payload: LoginUserPayload) : Promise<{ accessToken: string }> => {

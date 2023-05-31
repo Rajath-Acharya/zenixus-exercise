@@ -1,12 +1,21 @@
 import sequelize from '../db/config';
 import { Model, DataTypes } from 'sequelize';
+import PersonalDetails from './personal-details.model';
+
+export enum Role {
+  MANAGER = "MANAGER",
+  LEAD = "LEAD",
+  DEVELOPER = "DEVELOPER"
+}
 
 class User extends Model {
   public id!: string;
   public username!: string;
   public email!: string;
   public password!: string;
-  public role!: string;
+  public role!: Role;
+  public reporterId?: string;
+
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -37,14 +46,21 @@ User.init(
       allowNull: false,
     },
     role: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM(Role.MANAGER, Role.LEAD, Role.DEVELOPER),
       allowNull: false,
+    },
+    reporterId: {
+      type: DataTypes.UUID,
     },
   },
   {
-    tableName: 'users',
     sequelize,
+    modelName: 'User',
+    tableName: 'users',
   }
 );
+
+// Associations
+User.hasOne(PersonalDetails, { as: "personalDetails", foreignKey: 'userId' });
 
 export default User;
