@@ -30,9 +30,16 @@ class PersonalDetailsController {
         payload.address = address;
       }
 
+      const defaults = {
+        ...(fullName && { fullName }),
+        ...(address && { address }),
+      }
+
+      logger.info(defaults)
+
       const [_, created] = await PersonalDetails.findOrCreate({
         where: { userId },
-        defaults: { address, fullName },
+        defaults,
       });
       
        if (!created) {
