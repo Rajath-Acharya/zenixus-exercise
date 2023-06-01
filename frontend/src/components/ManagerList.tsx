@@ -59,6 +59,7 @@ const [reportees, setReportees] = useState<User[]>([]);
               <div key={user.id} className={styles.box}>
                 <div>
                 <p>{user?.username}</p>
+                <p>{user?.email}</p>
                 <p>{user?.role}</p>
                 </div>
                 <button onClick={() => removeReportee(user.id)}>Remove</button>
@@ -77,6 +78,7 @@ const [reportees, setReportees] = useState<User[]>([]);
               <div key={user.id} className={styles.box}>
                 <div>
                 <p>{user?.username}</p>
+                <p>{user?.email}</p>
                 <p>{user?.role}</p>
                 </div>
                 <button onClick={() => addReportee(user.id)}>Add Reportee</button>
@@ -95,6 +97,7 @@ const [reportees, setReportees] = useState<User[]>([]);
               <div key={user.id} className={styles.box}>
                 <div>
                 <p>{user?.username}</p>
+                <p>{user?.email}</p>
                 <p>{user?.role}</p>
                 </div>
                 <button onClick={() => addReportee(user.id)}>Add Reportee</button>
